@@ -1,6 +1,10 @@
+# 施工中
+
+- [ ] 语法高亮
+
 # pecmd README
 
-This is the README for your extension "pecmd". After writing up a brief description, we recommend including the following sections.
+为助力pecmd开发，所写的语言支持插件，支持的版本为[PECMD2.8.8U](https://github.com/grub4dos/pecmd/blob/PECMD2.8.8U)。
 
 ## Features
 

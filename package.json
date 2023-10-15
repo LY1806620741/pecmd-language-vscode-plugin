@@ -6,20 +6,35 @@
   "engines": {
     "vscode": "^1.83.0"
   },
+  "scripts": {
+    "syntaxes":"js-yaml syntaxes/pecmd.tmLanguage.yaml > syntaxes/pecmd.tmLanguage.json"
+  },
   "categories": [
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "pecmd",
-      "aliases": ["pecmd", "pecmd"],
-      "extensions": [".wsc"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "pecmd",
-      "scopeName": "source.pecmd",
-      "path": "./syntaxes/pecmd.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "pecmd",
+        "aliases": [
+          "pecmd",
+          "pecmd"
+        ],
+        "extensions": [
+          ".wcs"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pecmd",
+        "scopeName": "source.pecmd",
+        "path": "./syntaxes/pecmd.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
   }
 }
