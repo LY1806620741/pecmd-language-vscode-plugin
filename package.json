@@ -1,0 +1,25 @@
+{
+  "name": "pecmd",
+  "displayName": "pecmd",
+  "description": "language of pecmd",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "pecmd",
+      "aliases": ["pecmd", "pecmd"],
+      "extensions": [".wsc"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pecmd",
+      "scopeName": "source.pecmd",
+      "path": "./syntaxes/pecmd.tmLanguage.json"
+    }]
+  }
+}
