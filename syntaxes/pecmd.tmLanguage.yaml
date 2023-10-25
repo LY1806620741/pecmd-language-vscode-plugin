@@ -1,14 +1,32 @@
 $schema: "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json"
 name: "pecmd"
 patterns:
-  - include: "#command"
+  - include: "#code"
 repository:
-  command:
+  code:
+    patterns:
+      - include: "#comments"
+      - include: "#sysenv"
+      - include: "#function"
+  function:
+    patterns:
+        - include: "#function-name"
+        - include: "#function-call"
+        - include: "#comments"
+  function-call:
+    patterns:
+      begin: "\\b(CALL)"
+      beginCaptures:
+        1:
+          name: call.function
+      end: "(?!\\s*\\[)"
+      patterns:
+        - include: "#comments"
+  function-name:
     patterns:
       - name: "keyword.control.pecmd"
         match: "\\b(MAIN|LOAD|EXEC|CALL|REGI|ENVI|FILE|LINK|SEND|WAIT|KILL|SHUT|DEVI|SERV|PAGE|DISP|LOGO|TEXT|LOGS|IFEX|FBWF|WALL|RAMD|RUNS|NUMK|USER|SHEL|FONT|TEAM|FIND|HOTK|INIT|PATH|MESS|BROW|HELP|EJEC|TEMP|MD5C|MOUN|)\\b"
-      - include: "#comments-inline"
-  comments-inline:
+  comments:
     patterns:
       - begin: "(^[ \\t]+)?(?=//)"
         beginCaptures:
@@ -17,10 +35,22 @@ repository:
               "punctuation.whitespace.comment.leading.pecmd"
         end: "(?!\\G)"
         patterns:
-          - begin:  "//"
-            beginCaptures:
-              0:
-                name: "punctuation.definition.comment.pecmd"
-            end: "\\n"
-            name: "comment.line.double-slash.pecmd"
+          - include: "#comments-right"
+  comments-right:
+    patterns:
+      - begin:  "//"
+        beginCaptures:
+          0:
+            name: "punctuation.definition.comment.pecmd"
+        end: "\\n"
+        name: "comment.line.double-slash.pecmd"
+  # 系统变量
+  sysenv:
+    patterns:
+      - match: "%(CurDir|CurFile|Desktop|Favorites|IECache|MyName|MyName0|Personal|Programs|SendTo|StartMenu|Startup|QuickLaunch|&__LOGS)%"
+        captures:
+          0:
+            name: "punctuation.definition.variable.pecmd"
+        patterns:
+          - include: "#comments"
 scopeName: "source.pecmd"

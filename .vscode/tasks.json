@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "syntaxes",
+			"problemMatcher": [],
+			"label": "npm: syntaxes",
+			"detail": "js-yaml syntaxes/pecmd.tmLanguage.yaml > syntaxes/pecmd.tmLanguage.json"
+		}
+	]
+}
